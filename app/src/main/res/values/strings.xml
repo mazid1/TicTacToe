@@ -4,20 +4,30 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     
-    <!-- Strings in main activity -->
+    <!-- Strings in mainActivity -->
     <string name="cover">Cover</string>
     <string name="play_game">Play game</string>
     <string name="help">Help</string>
     <string name="about">About</string>
     <string name="exit">Exit</string>
 
-    <!-- Strings in select_difficulty activity -->
+    <!-- Strings in gameModeActivity-->
+    <string name="title_activity_game_mode">Game mode</string>
+    <string name="gameModeHeader">Select game mode</string>
+    <string name="onePlayer">One player</string>
+    <string name="twoPlayer">Two player</string>
+
+    <!-- Strings in DifficultyActivity -->
+    <string name="title_activity_difficulty">Difficulty</string>
+    <string name="difficultyHeader">Select difficulty level</string>
     <string name="easy">Easy</string>
     <string name="medium">Medium</string>
-    <string name="Hard">Hard</string>
+    <string name="hard">Hard</string>
 
     <!-- Strings in match activity -->
     <string name="you">You</string>
     <string name="computer">Computer</string>
+
+
     
 </resources>

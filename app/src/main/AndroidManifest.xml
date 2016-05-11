@@ -16,6 +16,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".gameModeActivity"
+            android:label="@string/title_activity_game_mode" >
+        </activity>
+        <activity
+            android:name=".DifficultyActivity"
+            android:label="@string/title_activity_difficulty"
+            android:parentActivityName=".gameModeActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.chholamuri.tictactoe.gameModeActivity" />
+        </activity>
     </application>
 
 </manifest>
