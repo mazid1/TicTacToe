@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">TicTacToe</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    
+    <!-- Strings in main activity -->
+    <string name="cover">Cover</string>
+    <string name="play_game">Play game</string>
+    <string name="help">Help</string>
+    <string name="about">About</string>
+    <string name="exit">Exit</string>
+
+    <!-- Strings in select_difficulty activity -->
+    <string name="easy">Easy</string>
+    <string name="medium">Medium</string>
+    <string name="Hard">Hard</string>
+
+    <!-- Strings in match activity -->
+    <string name="you">You</string>
+    <string name="computer">Computer</string>
+    
+</resources>
