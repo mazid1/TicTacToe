@@ -6,8 +6,11 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 
 public class gameModeActivity extends AppCompatActivity {
+
+    public static String EXTRA_MESSAGE;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,8 +40,17 @@ public class gameModeActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void startOnePlayerMatch(View view) {
-        Intent intent = new Intent(this, DifficultyActivity.class);
+    public void start1pMatch(View view) {
+        Intent intent = new Intent(this, BoardSizeActivity.class);
+        String message = "One player";
+        intent.putExtra(EXTRA_MESSAGE, message);
+        startActivity(intent);
+    }
+
+    public void start2pMatch(View view) {
+        Intent intent = new Intent(this, BoardSizeActivity.class);
+        String message = "Two player";
+        intent.putExtra(EXTRA_MESSAGE, message);
         startActivity(intent);
     }
 }

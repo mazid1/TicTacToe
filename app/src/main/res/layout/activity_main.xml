@@ -26,13 +26,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1.25"
-        android:text="@string/help"/>
+        android:text="@string/help"
+        android:onClick="help"/>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1.25"
-        android:text="@string/about"/>
+        android:text="@string/about"
+        android:onClick="about"/>
 
     <Button
         android:layout_width="match_parent"

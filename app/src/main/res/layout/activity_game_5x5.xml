@@ -1,0 +1,335 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.chholamuri.tictactoe.Game3x3Activity"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_weight="2">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Player 1: "/>
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:id="@+id/cross"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/cross"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Player 2: "/>
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:id="@+id/circle"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/circle"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="8">
+
+
+        <TableRow>
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:id="@+id/button00"
+                android:src="@drawable/empty"
+                android:adjustViewBounds="true"
+                android:paddingRight="2dp"
+                android:layout_margin="2dp"/>
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:id="@+id/button01"
+                android:src="@drawable/empty"
+                android:adjustViewBounds="true"
+                android:paddingRight="2dp"
+                android:layout_margin="2dp"/>
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:id="@+id/button02"
+                android:src="@drawable/empty"
+                android:adjustViewBounds="true"
+                android:paddingRight="2dp"
+                android:layout_margin="2dp"/>
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:id="@+id/button03"
+                android:src="@drawable/empty"
+                android:adjustViewBounds="true"
+                android:paddingRight="2dp"
+                android:layout_margin="2dp"/>
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:id="@+id/button04"
+                android:src="@drawable/empty"
+                android:adjustViewBounds="true"
+                android:paddingRight="2dp"
+                android:layout_margin="2dp"/>
+        </TableRow>
+
+        <TableRow>
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:id="@+id/button10"
+                android:src="@drawable/empty"
+                android:adjustViewBounds="true"
+                android:paddingRight="2dp"
+                android:layout_margin="2dp"/>
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:id="@+id/button11"
+                android:src="@drawable/empty"
+                android:adjustViewBounds="true"
+                android:paddingRight="2dp"
+                android:layout_margin="2dp"/>
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:id="@+id/button12"
+                android:src="@drawable/empty"
+                android:adjustViewBounds="true"
+                android:paddingRight="2dp"
+                android:layout_margin="2dp"/>
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:id="@+id/button13"
+                android:src="@drawable/empty"
+                android:adjustViewBounds="true"
+                android:paddingRight="2dp"
+                android:layout_margin="2dp"/>
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:id="@+id/button14"
+                android:src="@drawable/empty"
+                android:adjustViewBounds="true"
+                android:paddingRight="2dp"
+                android:layout_margin="2dp"/>
+        </TableRow>
+
+        <TableRow>
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:id="@+id/button20"
+                android:src="@drawable/empty"
+                android:adjustViewBounds="true"
+                android:paddingRight="2dp"
+                android:layout_margin="2dp"/>
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:id="@+id/button21"
+                android:src="@drawable/empty"
+                android:adjustViewBounds="true"
+                android:paddingRight="2dp"
+                android:layout_margin="2dp"/>
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:id="@+id/button22"
+                android:src="@drawable/empty"
+                android:adjustViewBounds="true"
+                android:paddingRight="2dp"
+                android:layout_margin="2dp"/>
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:id="@+id/button23"
+                android:src="@drawable/empty"
+                android:adjustViewBounds="true"
+                android:paddingRight="2dp"
+                android:layout_margin="2dp"/>
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:id="@+id/button24"
+                android:src="@drawable/empty"
+                android:adjustViewBounds="true"
+                android:paddingRight="2dp"
+                android:layout_margin="2dp"/>
+        </TableRow>
+
+        <TableRow>
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:id="@+id/button30"
+                android:src="@drawable/empty"
+                android:adjustViewBounds="true"
+                android:paddingRight="2dp"
+                android:layout_margin="2dp"/>
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:id="@+id/button31"
+                android:src="@drawable/empty"
+                android:adjustViewBounds="true"
+                android:paddingRight="2dp"
+                android:layout_margin="2dp"/>
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:id="@+id/button32"
+                android:src="@drawable/empty"
+                android:adjustViewBounds="true"
+                android:paddingRight="2dp"
+                android:layout_margin="2dp"/>
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:id="@+id/button33"
+                android:src="@drawable/empty"
+                android:adjustViewBounds="true"
+                android:paddingRight="2dp"
+                android:layout_margin="2dp"/>
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:id="@+id/button34"
+                android:src="@drawable/empty"
+                android:adjustViewBounds="true"
+                android:paddingRight="2dp"
+                android:layout_margin="2dp"/>
+        </TableRow>
+
+        <TableRow>
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:id="@+id/button40"
+                android:src="@drawable/empty"
+                android:adjustViewBounds="true"
+                android:paddingRight="2dp"
+                android:layout_margin="2dp"/>
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:id="@+id/button41"
+                android:src="@drawable/empty"
+                android:adjustViewBounds="true"
+                android:paddingRight="2dp"
+                android:layout_margin="2dp"/>
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:id="@+id/button42"
+                android:src="@drawable/empty"
+                android:adjustViewBounds="true"
+                android:paddingRight="2dp"
+                android:layout_margin="2dp"/>
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:id="@+id/button43"
+                android:src="@drawable/empty"
+                android:adjustViewBounds="true"
+                android:paddingRight="2dp"
+                android:layout_margin="2dp"/>
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:id="@+id/button44"
+                android:src="@drawable/empty"
+                android:adjustViewBounds="true"
+                android:paddingRight="2dp"
+                android:layout_margin="2dp"/>
+        </TableRow>
+
+    </TableLayout>
+
+</LinearLayout>

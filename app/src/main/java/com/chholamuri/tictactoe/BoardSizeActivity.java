@@ -6,8 +6,9 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 
-public class DifficultyActivity extends AppCompatActivity {
+public class BoardSizeActivity extends AppCompatActivity {
 
     public static String EXTRA_MESSAGE;
     String message;
@@ -15,7 +16,7 @@ public class DifficultyActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_difficulty);
+        setContentView(R.layout.activity_board_size);
 
         if (savedInstanceState == null) {
             Bundle intent = getIntent().getExtras();
@@ -27,12 +28,13 @@ public class DifficultyActivity extends AppCompatActivity {
         } else {
             message = (String) savedInstanceState.getSerializable(gameModeActivity.EXTRA_MESSAGE);
         }
+
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_difficulty, menu);
+        getMenuInflater().inflate(R.menu.menu_board_size, menu);
         return true;
     }
 
@@ -51,45 +53,35 @@ public class DifficultyActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void easy(View view) {
+    public void size3x3(View view) {
         Intent intent;
-        if(message.equals("One player3 x 3")) {
-            intent = new Intent(this, Game3x3Activity.class);
+
+        if(message.equals("One player")) {
+            intent = new Intent(this, DifficultyActivity.class);
         }
-        else {//if(message.equals("One Player5 x 5")) {
-            intent = new Intent(this, Game5x5Activity.class);
+        else {
+            intent = new Intent(this, Game3x3Activity.class); // need to update
         }
 
-        String newMsg = message + "easy";
+        String newMsg = message + "3 x 3";
         intent.putExtra(EXTRA_MESSAGE, newMsg);
+        //intent.putExtra(EXTRA_MESSAGE, message);
         startActivity(intent);
     }
 
-    public void medium(View view) {
+    public void size5x5(View view) {
         Intent intent;
-        if(message.equals("One player3 x 3") ) {
-            intent = new Intent(this, Game3x3Activity.class);
+
+        if(message.equals("One player")) {
+            intent = new Intent(this, DifficultyActivity.class);
         }
-        else {//if(message.equals("One Player5 x 5") ) {
-            intent = new Intent(this, Game5x5Activity.class);
+        else {
+            intent = new Intent(this, Game5x5Activity.class); // need to update
         }
 
-        String newMsg = message + "medium";
+        String newMsg = message + "5 x 5";
         intent.putExtra(EXTRA_MESSAGE, newMsg);
-        startActivity(intent);
-    }
-
-    public void hard(View view) {
-        Intent intent;
-        if(message.equals("One player3 x 3") ) {
-            intent = new Intent(this, Game3x3Activity.class);
-        }
-        else {//if(message.equals("One Player5 x 5") ) {
-            intent = new Intent(this, Game5x5Activity.class);
-        }
-
-        String newMsg = message + "hard";
-        intent.putExtra(EXTRA_MESSAGE, newMsg);
+        //intent.putExtra(EXTRA_MESSAGE, message);
         startActivity(intent);
     }
 }

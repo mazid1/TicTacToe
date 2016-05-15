@@ -24,11 +24,24 @@
     <string name="medium">Medium</string>
     <string name="hard">Hard</string>
 
-    <!-- Strings in match activity -->
-    <string name="you">You</string>
-    <string name="computer">Computer</string>
-    <string name="title_activity_one_player">OnePlayerActivity</string>
+    <!-- Strings in BoardSize activity -->
+    <string name="title_activity_board_size">Board size</string>
+    <string name="boardSizeHeader">Select board size</string>
+    <string name="size3x3">3 x 3</string>
+    <string name="size5x5">5 x 5</string>
 
+    <!-- Strings in Game3x3 activity -->
+    <string name="title_activity_one_player">3 x 3 Game</string>
 
+    <!-- Strings in Game5x5 activity -->
+    <string name="title_activity_game5x5">5 x 5 Game</string>
+
+    <!-- Strings in Help activity -->
+    <string name="title_activity_help">Help</string>
+    <string name="help_msg">Rules of the game:\nThe object of Tic Tac Toe is to get three in a row. You play on a three by three game board. The first player is known as X and the second is O. Players alternate placing Xs and Os on the game board until either oppent has three in a row or all nine squares are filled.</string>
+
+    <!-- Strings in Help activity -->
+    <string name="title_activity_about">About</string>
+    <string name="about_msg">This app is created as an AI project.\n\nContributed developers:\n1.Mohammad Mazedul Islam\n2.Sourav Sen Tonmoy\n3.Shahed Shahriar</string>
     
 </resources>
