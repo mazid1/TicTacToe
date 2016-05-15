@@ -27,6 +27,7 @@
     <!-- Strings in match activity -->
     <string name="you">You</string>
     <string name="computer">Computer</string>
+    <string name="title_activity_one_player">OnePlayerActivity</string>
 
 
     

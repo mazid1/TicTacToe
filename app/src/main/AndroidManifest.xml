@@ -28,6 +28,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.chholamuri.tictactoe.gameModeActivity" />
         </activity>
+        <activity
+            android:name=".OnePlayerActivity"
+            android:label="@string/title_activity_one_player" >
+        </activity>
     </application>
 
 </manifest>

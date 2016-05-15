@@ -1,24 +1,22 @@
 package com.chholamuri.tictactoe;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 
-public class DifficultyActivity extends AppCompatActivity {
+public class OnePlayerActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_difficulty);
+        setContentView(R.layout.activity_one_player);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_difficulty, menu);
+        getMenuInflater().inflate(R.menu.menu_one_player, menu);
         return true;
     }
 
@@ -35,20 +33,5 @@ public class DifficultyActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    public void easy(View view) {
-        Intent intent = new Intent(this, OnePlayerActivity.class);
-        startActivity(intent);
-    }
-
-    public void medium(View view) {
-        Intent intent = new Intent(this, OnePlayerActivity.class);
-        startActivity(intent);
-    }
-
-    public void hard(View view) {
-        Intent intent = new Intent(this, OnePlayerActivity.class);
-        startActivity(intent);
     }
 }
