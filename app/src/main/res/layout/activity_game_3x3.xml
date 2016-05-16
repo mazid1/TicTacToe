@@ -75,7 +75,8 @@
             android:src="@drawable/empty"
             android:adjustViewBounds="true"
             android:paddingRight="2dp"
-            android:layout_margin="2dp"/>
+            android:layout_margin="2dp"
+            android:onClick="btn00"/>
 
         <ImageButton
             android:layout_width="wrap_content"
@@ -85,7 +86,8 @@
             android:src="@drawable/empty"
             android:adjustViewBounds="true"
             android:paddingRight="2dp"
-            android:layout_margin="2dp"/>
+            android:layout_margin="2dp"
+            android:onClick="btn01"/>
 
         <ImageButton
             android:layout_width="wrap_content"
@@ -95,7 +97,8 @@
             android:src="@drawable/empty"
             android:adjustViewBounds="true"
             android:paddingRight="2dp"
-            android:layout_margin="2dp"/>
+            android:layout_margin="2dp"
+            android:onClick="btn02"/>
     </TableRow>
 
     <TableRow>
@@ -108,7 +111,8 @@
             android:src="@drawable/empty"
             android:adjustViewBounds="true"
             android:paddingRight="2dp"
-            android:layout_margin="2dp"/>
+            android:layout_margin="2dp"
+            android:onClick="btn10"/>
 
         <ImageButton
             android:layout_width="wrap_content"
@@ -118,7 +122,8 @@
             android:src="@drawable/empty"
             android:adjustViewBounds="true"
             android:paddingRight="2dp"
-            android:layout_margin="2dp"/>
+            android:layout_margin="2dp"
+            android:onClick="btn11"/>
 
         <ImageButton
             android:layout_width="wrap_content"
@@ -128,7 +133,8 @@
             android:src="@drawable/empty"
             android:adjustViewBounds="true"
             android:paddingRight="2dp"
-            android:layout_margin="2dp"/>
+            android:layout_margin="2dp"
+            android:onClick="btn12"/>
 
     </TableRow>
 
@@ -142,7 +148,8 @@
             android:src="@drawable/empty"
             android:adjustViewBounds="true"
             android:paddingRight="2dp"
-            android:layout_margin="2dp"/>
+            android:layout_margin="2dp"
+            android:onClick="btn20"/>
 
         <ImageButton
             android:layout_width="wrap_content"
@@ -152,7 +159,8 @@
             android:src="@drawable/empty"
             android:adjustViewBounds="true"
             android:paddingRight="2dp"
-            android:layout_margin="2dp"/>
+            android:layout_margin="2dp"
+            android:onClick="btn21"/>
 
         <ImageButton
             android:layout_width="wrap_content"
@@ -162,7 +170,8 @@
             android:src="@drawable/empty"
             android:adjustViewBounds="true"
             android:paddingRight="2dp"
-            android:layout_margin="2dp"/>
+            android:layout_margin="2dp"
+            android:onClick="btn22"/>
     </TableRow>
     </TableLayout>
 
