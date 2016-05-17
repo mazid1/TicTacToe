@@ -17,6 +17,14 @@ public class GameEnd {
         this.player = player;
     }
 
+    public int getPlayer() {
+        return player;
+    }
+
+    public Point[] getArr() {
+        return arr;
+    }
+
     public boolean getIsDraw() {
         return isDraw;
     }

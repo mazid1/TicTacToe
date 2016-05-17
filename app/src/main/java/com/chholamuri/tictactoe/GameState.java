@@ -1,17 +1,20 @@
 package com.chholamuri.tictactoe;
 
+import android.util.Log;
+
 import java.util.Random;
 
 
 public class GameState {
     private int size, board[][], moveCount;
-    Random rnd;
+    private Random rnd;
 
     public GameState() {
 
     }
 
     public GameState(int size) {
+        this.moveCount = 0;
         this.size = size;
         board = new int[size][size];
         for(int i=0; i<size; i++) {
@@ -20,6 +23,7 @@ public class GameState {
             }
         }
         rnd = new Random();
+        //board[0][0] = -1;
         //board[1][2] = 1;
 //		board[1][0] = -1;
 //		board[0][2] = 1;
@@ -81,7 +85,7 @@ public class GameState {
         return 0;
     }
 
-    Point minimax(int grid[][], int currentPlayer) {
+    Point minimax(int grid[][], int currentPlayer, int depth) {
         int here = check(grid);
         if(here != 0) return new Point(here);
 
@@ -94,16 +98,19 @@ public class GameState {
             for(int j=0; j<size; j++) {
                 if(grid[i][j] == 0) {
                     grid[i][j] = currentPlayer;
-                    Point pt = minimax(grid, currentPlayer * (-1));
+                    Point pt = minimax(grid, currentPlayer * (-1), depth+1);
                     if(pt.getH() == -1) {
+                        if(depth == 0) Log.d("FUCK", "current = " + currentPlayer + " ( " + i + ", " + j + " ) " + pt.getH());
                         n++;
                         if(n == 1) nRet = new Point(i, j, -1);
                     }
                     else if(pt.getH() == 1) {
+                        if(depth == 0) Log.d("FUCK", "current = " + currentPlayer + " ( " + i + ", " + j + " ) " + pt.getH());
                         p++;
                         if(p == 1) pRet = new Point(i, j, 1);
                     }
                     else {
+                        if(depth == 0) Log.d("FUCK", "current = " + currentPlayer + " ( " + i + ", " + j + " ) " + pt.getH());
                         d++;
                         if(d == 1) dRet = new Point(i, j, 0);
                     }
@@ -126,13 +133,13 @@ public class GameState {
         else return dRet;
     }
 
-    Point generateNextMove(int player) {
-        Point p = minimax(board, player);
+    public Point generateNextMove(int player) {
+        Point p = minimax(board, player, 0);
         this.drop(p, player);
         return p;
     }
 
-    Point randomMove(int player) {
+    public Point randomMove(int player) {
         moveCount++;
         while(true) {
             int x = (rnd.nextInt() % size + size) % size;
@@ -145,14 +152,21 @@ public class GameState {
         }
     }
 
-    Point properMove(int player) {
+    public Point properMove(int player) {
         moveCount++;
-        Point p = minimax(board, player);
+        int arr[][];
+        arr = new int[size][size];
+        for(int i=0; i<size; i++) {
+            for(int j=0; j<size; j++) {
+                arr[i][j] = board[i][j];
+            }
+        }
+        Point p = minimax(arr, player, 0);
         drop(p, player);
         return p;
     }
 
-    Point next(Point p, int player, int level) {
+    public Point next(Point p, int player, int level) {
         if(board[ p.getX() ][ p.getY() ] != 0) return p;
         drop(p, player);
         player *= (-1);
@@ -249,8 +263,9 @@ public class GameState {
         return check(this.board);
     }
 
-    void computerStart() {
-        drop(new Point(0, 0), 1);
+    public void computerStart() {
+        drop(new Point(0, 0), -1);
         moveCount++;
+        //properMove(-1);
     }
 }

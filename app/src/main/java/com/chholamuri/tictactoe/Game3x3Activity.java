@@ -37,10 +37,12 @@ public class Game3x3Activity extends AppCompatActivity {
 
         Random rand;
         rand = new Random();
-        if(rand.nextInt() % 2 == 0) {
-            player = -1;
+        if(rand.nextInt()%2 == 0) {
+            player = 1;
             gs.computerStart();
-        } else {
+            updateButton(new Point(0,0), -1);
+        }
+        else {
             player = 1;
         }
 
@@ -99,9 +101,28 @@ public class Game3x3Activity extends AppCompatActivity {
         else ib.setImageResource(R.drawable.circle);
     }
 
+    public void updateButtonForWinner(Point p, int pl) {
+        ImageButton ib;
+        int r = p.getX();
+        int c = p.getY();
+
+        if(r==0 && c==0) ib = (ImageButton) findViewById(R.id.button00);
+        else if(r==0 && c==1) ib = (ImageButton) findViewById(R.id.button01);
+        else if(r==0 && c==2) ib = (ImageButton) findViewById(R.id.button02);
+        else if(r==1 && c==0) ib = (ImageButton) findViewById(R.id.button10);
+        else if(r==1 && c==1) ib = (ImageButton) findViewById(R.id.button11);
+        else if(r==1 && c==2) ib = (ImageButton) findViewById(R.id.button12);
+        else if(r==2 && c==0) ib = (ImageButton) findViewById(R.id.button20);
+        else if(r==2 && c==1) ib = (ImageButton) findViewById(R.id.button21);
+        else ib = (ImageButton) findViewById(R.id.button22);
+
+        if(pl == 1) ib.setImageResource(R.drawable.crosswin);
+        else ib.setImageResource(R.drawable.circlewin);
+    }
+
     public void input(int r, int c) {
         Point p = new Point(r, c);
-        Point q = gs.next(p, player * (-1), getLevel());
+        Point q = gs.next(p, player, getLevel());
         if(!(p.getX() == q.getX() && p.getY() == q.getY())) {
             if(p.getX()>=0 && p.getX()<3 && p.getY()>=0 && p.getY()<3) updateButton(p, player);
             if(q.getX()>=0 && q.getX()<3 && q.getY()>=0 && q.getY()<3) updateButton(q, player * (-1));
@@ -113,6 +134,10 @@ public class Game3x3Activity extends AppCompatActivity {
         if(gs.check1() != 0) { // win
             GameEnd ge = gs.endState();
             //TODO implement win handler
+            Point[] point = ge.getArr();
+            for(int i=0; i<3; i++) {
+                updateButtonForWinner(point[i], ge.getPlayer());
+            }
             return;
         }
     }
