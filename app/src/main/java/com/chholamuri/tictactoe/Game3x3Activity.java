@@ -101,10 +101,19 @@ public class Game3x3Activity extends AppCompatActivity {
 
     public void input(int r, int c) {
         Point p = new Point(r, c);
-        Point q = gs.next(p, player * (-1));
+        Point q = gs.next(p, player * (-1), getLevel());
         if(!(p.getX() == q.getX() && p.getY() == q.getY())) {
-            updateButton(p, player);
-            updateButton(q, player * (-1));
+            if(p.getX()>=0 && p.getX()<3 && p.getY()>=0 && p.getY()<3) updateButton(p, player);
+            if(q.getX()>=0 && q.getX()<3 && q.getY()>=0 && q.getY()<3) updateButton(q, player * (-1));
+        }
+        if(q.getX() == 3 && q.getY() == 3) { // draw
+            //TODO implement draw handler
+            return;
+        }
+        if(gs.check1() != 0) { // win
+            GameEnd ge = gs.endState();
+            //TODO implement win handler
+            return;
         }
     }
 

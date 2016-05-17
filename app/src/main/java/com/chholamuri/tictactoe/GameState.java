@@ -1,7 +1,11 @@
 package com.chholamuri.tictactoe;
 
+import java.util.Random;
+
+
 public class GameState {
-    private int size, board[][];
+    private int size, board[][], moveCount;
+    Random rnd;
 
     public GameState() {
 
@@ -15,6 +19,7 @@ public class GameState {
                 board[i][j] = 0; // board[i][j] = -1 for O move and +1 for X move
             }
         }
+        rnd = new Random();
         //board[1][2] = 1;
 //		board[1][0] = -1;
 //		board[0][2] = 1;
@@ -127,12 +132,125 @@ public class GameState {
         return p;
     }
 
-    Point next(Point p, int player) {
+    Point randomMove(int player) {
+        moveCount++;
+        while(true) {
+            int x = (rnd.nextInt() % size + size) % size;
+            int y = (rnd.nextInt() % size + size) % size;
+            if(board[x][y] == 0) {
+                Point p = new Point(x, y);
+                drop(p, player);
+                return p;
+            }
+        }
+    }
+
+    Point properMove(int player) {
+        moveCount++;
+        Point p = minimax(board, player);
+        drop(p, player);
+        return p;
+    }
+
+    Point next(Point p, int player, int level) {
         if(board[ p.getX() ][ p.getY() ] != 0) return p;
         drop(p, player);
         player *= (-1);
-        p = minimax(board, player);
-        drop(p, player);
+        moveCount++;
+        GameEnd ge = checkGameEnd();
+        if(ge.getIsDraw()) {
+            return new Point(size, size);
+        }
+        if(ge.getIsResult()) {
+            return new Point(size+1, size+1);
+        }
+        if(level == 0) { // easy
+            return randomMove(player);
+        }
+        else if(level == 1) { // medium
+            int x = rnd.nextInt();
+            if(x%10 == 0) return randomMove(player);
+            else return properMove(player);
+        }
+        else if(level == 2) { // hard
+            return properMove(player);
+        }
         return p;
+    }
+
+    public GameEnd endState() {
+        GameEnd ge = new GameEnd();
+        ge.setIsResult(true);
+        int cnt;
+        for(int i=0; i<size; i++) {
+            for(int j=0; j<size; j++) {
+                int val = board[i][j];
+                if(val == 0)continue;
+
+                ge.Reset();
+                cnt = 0;
+                for(int k=0; k<size && j+k<size; k++) {
+                    int x = i;
+                    int y = j + k;
+                    ge.Push(new Point(x, y), val);
+                    if(board[x][y] == val) cnt++;
+                }
+                if(cnt == size) return ge;
+
+                ge.Reset();
+                cnt = 0;
+                for(int k=0; k<size && i+k<size; k++) {
+                    int x = i + k;
+                    int y = j;
+                    ge.Push(new Point(x, y), val);
+                    if(board[x][y] == val)cnt++;
+                }
+                if(cnt == size) return ge;
+
+                ge.Reset();
+                cnt = 0;
+                for(int k=0; k<size && i+k<size && j+k<size; k++) {
+                    int x = i + k;
+                    int y = j + k;
+                    ge.Push(new Point(x, y), val);
+                    if(board[x][y] == val)cnt++;
+                }
+                if(cnt == size) return ge;
+
+                ge.Reset();
+                cnt = 0;
+                for(int k=0; k<size && i+k<size && j-k>=0; k++) {
+                    int x = i + k;
+                    int y = j - k;
+                    ge.Push(new Point(x, y), val);
+                    if(board[x][y] == val)cnt++;
+                }
+                if(cnt == size) return ge;
+            }
+        }
+        return ge;
+    }
+
+    public GameEnd checkGameEnd() {
+        GameEnd ge = new GameEnd();
+//		System.out.println("checkGameEnd moveCount = " + moveCount);
+        if(check(this.board) == 0 && moveCount == size*size) {
+            ge.setIsDraw(true);
+            return ge;
+        }
+        else {
+            int winner = check(this.board);
+            if(winner == 0) return ge;
+            else return endState();
+        }
+    }
+
+    public int check1() {
+        return check(this.board);
+    }
+
+    void computerStart() {
+        drop(new Point(0, 0), 1);
+        moveCount++;
     }
 }
