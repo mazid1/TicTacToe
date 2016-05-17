@@ -6,6 +6,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import java.util.Random;
 
@@ -120,6 +121,20 @@ public class Game3x3Activity extends AppCompatActivity {
         else ib.setImageResource(R.drawable.circlewin);
     }
 
+    public void setButtonDisable() {
+        ImageButton ib;
+        ib = (ImageButton) findViewById(R.id.button00); ib.setClickable(false);
+        ib = (ImageButton) findViewById(R.id.button01); ib.setClickable(false);
+        ib = (ImageButton) findViewById(R.id.button02); ib.setClickable(false);
+        ib = (ImageButton) findViewById(R.id.button10); ib.setClickable(false);
+        ib = (ImageButton) findViewById(R.id.button11); ib.setClickable(false);
+        ib = (ImageButton) findViewById(R.id.button12); ib.setClickable(false);
+        ib = (ImageButton) findViewById(R.id.button20); ib.setClickable(false);
+        ib = (ImageButton) findViewById(R.id.button21); ib.setClickable(false);
+        ib = (ImageButton) findViewById(R.id.button22); ib.setClickable(false);
+        return;
+    }
+
     public void input(int r, int c) {
         Point p = new Point(r, c);
         Point q = gs.next(p, player, getLevel());
@@ -128,15 +143,29 @@ public class Game3x3Activity extends AppCompatActivity {
             if(q.getX()>=0 && q.getX()<3 && q.getY()>=0 && q.getY()<3) updateButton(q, player * (-1));
         }
         if(q.getX() == 3 && q.getY() == 3) { // draw
-            //TODO implement draw handler
+            //TODO how do you know Draw when the last input is from computer
+            setButtonDisable();
+            TextView tv = (TextView) findViewById(R.id.strEndMsg);
+            tv.setText("It's a tie!!!");
+            tv.setVisibility(View.VISIBLE);
             return;
         }
         if(gs.check1() != 0) { // win
+            //TODO how do you know Draw when the last input is from computer
             GameEnd ge = gs.endState();
-            //TODO implement win handler
             Point[] point = ge.getArr();
             for(int i=0; i<3; i++) {
                 updateButtonForWinner(point[i], ge.getPlayer());
+                setButtonDisable();
+                if(ge.getPlayer() == 1) {
+                    TextView tv = (TextView) findViewById(R.id.strEndMsg);
+                    tv.setText("You win!!!");
+                    tv.setVisibility(View.VISIBLE);
+                } else {
+                    TextView tv = (TextView) findViewById(R.id.strEndMsg);
+                    tv.setText("You lose!!!");
+                    tv.setVisibility(View.VISIBLE);
+                }
             }
             return;
         }

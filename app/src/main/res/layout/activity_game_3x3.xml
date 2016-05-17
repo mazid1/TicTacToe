@@ -24,7 +24,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Player 1: "/>
+                android:text="Computer  "/>
 
             <ImageView
                 android:layout_width="20dp"
@@ -45,7 +45,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Player 2: "/>
+                android:text="Human     "/>
 
             <ImageView
                 android:layout_width="20dp"
@@ -63,7 +63,7 @@
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="8">
+        android:layout_weight="7">
 
 
     <TableRow>
@@ -175,5 +175,17 @@
             android:onClick="btn22"/>
     </TableRow>
     </TableLayout>
+
+    <TextView
+        android:id="@+id/strEndMsg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/background"
+        android:visibility="invisible"
+        android:gravity="center"
+        android:textSize="20dp"
+        android:textColor="@color/red"
+        android:textStyle="bold"
+        android:layout_weight="1"/>
 
 </LinearLayout>
