@@ -7,6 +7,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 
+import java.util.Random;
+
+
 public class Game3x3Activity extends AppCompatActivity {
 
     public static String EXTRA_MESSAGE;
@@ -17,7 +20,7 @@ public class Game3x3Activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         gs = new GameState(3);
-        player = 1;
+        //player = 1;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_3x3);
 
@@ -31,6 +34,16 @@ public class Game3x3Activity extends AppCompatActivity {
         } else {
             message = (String) savedInstanceState.getSerializable(BoardSizeActivity.EXTRA_MESSAGE);
         }
+
+        Random rand;
+        rand = new Random();
+        if(rand.nextInt() % 2 == 0) {
+            player = -1;
+            gs.computerStart();
+        } else {
+            player = 1;
+        }
+
     }
 
     @Override
@@ -53,6 +66,18 @@ public class Game3x3Activity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+
+
+    public int getLevel() {
+        if(message.equals("One player3 x 3easy")) {
+            return 0;
+        } else if(message.equals("One player3 x 3medium")) {
+            return 1;
+        } else {
+            return 2;
+        }
     }
 
     public void updateButton(Point p, int pl) {

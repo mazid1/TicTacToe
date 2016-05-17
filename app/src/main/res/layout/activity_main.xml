@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/background">
 
 
     <ImageView
@@ -20,27 +21,31 @@
         android:layout_height="wrap_content"
         android:layout_weight="1.25"
         android:text="@string/play_game"
-        android:onClick="playGame"/>
+        android:onClick="playGame"
+        android:background="@color/button"/>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1.25"
         android:text="@string/help"
-        android:onClick="help"/>
+        android:onClick="help"
+        android:background="@color/button"/>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1.25"
         android:text="@string/about"
-        android:onClick="about"/>
+        android:onClick="about"
+        android:background="@color/button"/>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1.25"
         android:text="@string/exit"
-        android:onClick="exitApp"/>
+        android:onClick="exitApp"
+        android:background="@color/button"/>
 
 </LinearLayout>
