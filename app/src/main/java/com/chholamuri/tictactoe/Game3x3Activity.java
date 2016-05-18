@@ -50,9 +50,9 @@ public class Game3x3Activity extends AppCompatActivity {
         } else {
             is2p = false;
             TextView tv = (TextView) findViewById(R.id.p1);
-            tv.setText("Computer: ");
-            tv = (TextView) findViewById(R.id.p2);
             tv.setText("Human: ");
+            tv = (TextView) findViewById(R.id.p2);
+            tv.setText("Computer: ");
             Random rand;
             rand = new Random();
             if(rand.nextInt()%2 == 0) {
