@@ -43,8 +43,16 @@ public class Game3x3Activity extends AppCompatActivity {
             is2p = true;
             player = 1;
            // Log.d("DBG", "2player");
+            TextView tv = (TextView) findViewById(R.id.p1);
+            tv.setText("Player 1: ");
+            tv = (TextView) findViewById(R.id.p2);
+            tv.setText("Player 2: ");
         } else {
             is2p = false;
+            TextView tv = (TextView) findViewById(R.id.p1);
+            tv.setText("Computer: ");
+            tv = (TextView) findViewById(R.id.p2);
+            tv.setText("Human: ");
             Random rand;
             rand = new Random();
             if(rand.nextInt()%2 == 0) {
@@ -151,15 +159,10 @@ public class Game3x3Activity extends AppCompatActivity {
         /*Log.d("DBG", " p = ( " + p.getX() + ", " + p.getY() + " )");
         Log.d("DBG", " q = ( " + q.getX() + ", " + q.getY() + " )");*/
         if(!(p.getX() == q.getX() && p.getY() == q.getY())) {
-            if(p.getX()>=0 && p.getX()<3 && p.getY()>=0 && p.getY()<3) updateButton(p, player);
-            if(q.getX()>=0 && q.getX()<3 && q.getY()>=0 && q.getY()<3) updateButton(q, player * (-1));
-        }
-        if(q.getX() == 3 && q.getY() == 3 || gs.getMoveCount() >= 3*3) { // draw
-            setButtonDisable();
-            TextView tv = (TextView) findViewById(R.id.strEndMsg);
-            tv.setText("It's a tie!!!");
-            tv.setVisibility(View.VISIBLE);
-            return;
+            if (p.getX() >= 0 && p.getX() < 3 && p.getY() >= 0 && p.getY() < 3)
+                updateButton(p, player);
+            if (q.getX() >= 0 && q.getX() < 3 && q.getY() >= 0 && q.getY() < 3)
+                updateButton(q, player * (-1));
         }
         if(gs.check1() != 0) { // win
             GameEnd ge = gs.endState();
@@ -179,10 +182,45 @@ public class Game3x3Activity extends AppCompatActivity {
             }
             return;
         }
+        else if(q.getX() == 3 && q.getY() == 3 || gs.getMoveCount() >= 3*3) { // draw
+            setButtonDisable();
+            TextView tv = (TextView) findViewById(R.id.strEndMsg);
+            tv.setText("It's a tie!!!");
+            tv.setVisibility(View.VISIBLE);
+            return;
+        }
     }
 
     public void input2p(int r, int c) {
-
+        boolean b = gs.twoPlayerMove(new Point(r, c), player);
+        if(!b) return;
+        updateButton(new Point(r, c), player);
+        player *= (-1);
+        if(gs.check1() != 0) { // win
+            GameEnd ge = gs.endState();
+            Point[] point = ge.getArr();
+            for(int i=0; i<3; i++) {
+                updateButtonForWinner(point[i], ge.getPlayer());
+                setButtonDisable();
+                if(ge.getPlayer() == 1) {
+                    TextView tv = (TextView) findViewById(R.id.strEndMsg);
+                    tv.setText("Player 1 wins!!!");
+                    tv.setVisibility(View.VISIBLE);
+                } else {
+                    TextView tv = (TextView) findViewById(R.id.strEndMsg);
+                    tv.setText("Player 2 wins!!!");
+                    tv.setVisibility(View.VISIBLE);
+                }
+            }
+            return;
+        }
+        else if(gs.getMoveCount() >= 3*3) { // draw
+            setButtonDisable();
+            TextView tv = (TextView) findViewById(R.id.strEndMsg);
+            tv.setText("It's a tie!!!");
+            tv.setVisibility(View.VISIBLE);
+            return;
+        }
     }
 
     public void btn00(View view) {

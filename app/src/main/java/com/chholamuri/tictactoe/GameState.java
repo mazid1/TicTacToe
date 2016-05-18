@@ -33,6 +33,10 @@ public class GameState {
         return moveCount;
     }
 
+    public void setMoveCount(int moveCount) {
+        this.moveCount = moveCount;
+    }
+
     public void printBoard() {
         for(int i=0; i<size; i++) {
             for(int j=0; j<size; j++) {
@@ -328,10 +332,6 @@ public class GameState {
         return ge;
     }
 
-    public void twoPlayerMove(Point p, int player) {
-
-    }
-
     public GameEnd checkGameEnd() {
         GameEnd ge = new GameEnd();
 //		System.out.println("checkGameEnd moveCount = " + moveCount);
@@ -354,5 +354,12 @@ public class GameState {
         drop(new Point(0, 0), -1);
         moveCount++;
         //properMove(-1);
+    }
+
+    public boolean twoPlayerMove(Point p, int player) {
+        if(board[p.getX()][p.getY()] != 0) return false;
+        drop(p, player);
+        moveCount++;
+        return true;
     }
 }
