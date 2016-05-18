@@ -29,6 +29,10 @@ public class GameState {
 //		board[0][2] = 1;
     }
 
+    public int getMoveCount() {
+        return moveCount;
+    }
+
     public void printBoard() {
         for(int i=0; i<size; i++) {
             for(int j=0; j<size; j++) {
@@ -85,7 +89,88 @@ public class GameState {
         return 0;
     }
 
-    Point minimax(int grid[][], int currentPlayer, int depth) {
+    public Point minimax(int grid[][], int currentPlayer, int depth) {
+        int here = check(grid);
+        if(here != 0) {
+            Point retHere = new Point(here);
+            retHere.setD(depth);
+            return retHere;
+        }
+
+        if(currentPlayer == 1) {
+            Point nRet = new Point(0, true);
+            Point pRet = new Point(100, true);
+            Point dRet = new Point(0, true);
+            int n=0, p=0, d=0, ret=0;
+
+            for(int i=0; i<size; i++) {
+                for(int j=0; j<size; j++) {
+                    if(grid[i][j] == 0) {
+                        grid[i][j] = currentPlayer;
+                        Point pt = minimax(grid, currentPlayer * (-1), depth+1);
+                        if(pt.getH() == -1) {
+                            n++;
+                            if(pt.getD() >= nRet.getD()) nRet = new Point(i, j, -1, pt.getD());
+                        }
+                        else if(pt.getH() == 1) {
+                            p++;
+                            if(pt.getD() <= pRet.getD()) pRet = new Point(i, j, 1, pt.getD());
+                        }
+                        else {
+                            d++;
+                            if(pt.getD() >= dRet.getD()) dRet = new Point(i, j, 0, pt.getD());
+                        }
+                        grid[i][j] = 0;
+                    }
+                }
+            }
+
+            if(p != 0)ret = 1;
+            else if(n != 0 && d == 0)ret = -1;
+
+            if(ret == 1) return pRet;
+            else if(ret == -1) return nRet;
+            else return dRet;
+        }
+        else { // currentPLayer = -1;
+            Point nRet = new Point(100, true);
+            Point pRet = new Point(0, true);
+            Point dRet = new Point(0, true);
+            int n=0, p=0, d=0, ret=0;
+
+            for(int i=0; i<size; i++) {
+                for(int j=0; j<size; j++) {
+                    if(grid[i][j] == 0) {
+                        grid[i][j] = currentPlayer;
+                        Point pt = minimax(grid, currentPlayer * (-1), depth+1);
+                        if(pt.getH() == -1) {
+                            n++;
+                            if(pt.getD() <= nRet.getD()) nRet = new Point(i, j, -1, pt.getD());
+                        }
+                        else if(pt.getH() == 1) {
+                            p++;
+                            if(pt.getD() >= pRet.getD()) pRet = new Point(i, j, 1, pt.getD());
+                        }
+                        else {
+                            d++;
+                            if(pt.getD() >= dRet.getD()) dRet = new Point(i, j, 0, pt.getD());
+                        }
+                        grid[i][j] = 0;
+                    }
+                }
+            }
+
+            if(n != 0)ret = -1;
+            else if(p != 0 && d == 0)ret = +1;
+
+            if(ret == 1) return pRet;
+            else if(ret == -1) return nRet;
+            else return dRet;
+        }
+    }
+
+    /*
+    public Point minimax(int grid[][], int currentPlayer, int depth) {
         int here = check(grid);
         if(here != 0) return new Point(here);
 
@@ -100,17 +185,14 @@ public class GameState {
                     grid[i][j] = currentPlayer;
                     Point pt = minimax(grid, currentPlayer * (-1), depth+1);
                     if(pt.getH() == -1) {
-                        if(depth == 0) Log.d("FUCK", "current = " + currentPlayer + " ( " + i + ", " + j + " ) " + pt.getH());
                         n++;
                         if(n == 1) nRet = new Point(i, j, -1);
                     }
                     else if(pt.getH() == 1) {
-                        if(depth == 0) Log.d("FUCK", "current = " + currentPlayer + " ( " + i + ", " + j + " ) " + pt.getH());
                         p++;
                         if(p == 1) pRet = new Point(i, j, 1);
                     }
                     else {
-                        if(depth == 0) Log.d("FUCK", "current = " + currentPlayer + " ( " + i + ", " + j + " ) " + pt.getH());
                         d++;
                         if(d == 1) dRet = new Point(i, j, 0);
                     }
@@ -132,6 +214,7 @@ public class GameState {
         else if(ret == -1) return nRet;
         else return dRet;
     }
+    */
 
     public Point generateNextMove(int player) {
         Point p = minimax(board, player, 0);
@@ -243,6 +326,10 @@ public class GameState {
             }
         }
         return ge;
+    }
+
+    public void twoPlayerMove(Point p, int player) {
+
     }
 
     public GameEnd checkGameEnd() {

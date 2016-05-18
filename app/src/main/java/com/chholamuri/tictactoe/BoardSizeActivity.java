@@ -60,7 +60,7 @@ public class BoardSizeActivity extends AppCompatActivity {
             intent = new Intent(this, DifficultyActivity.class);
         }
         else {
-            intent = new Intent(this, Game3x3Activity.class); // need to update
+            intent = new Intent(this, Game3x3Activity.class);
         }
 
         String newMsg = message + "3 x 3";

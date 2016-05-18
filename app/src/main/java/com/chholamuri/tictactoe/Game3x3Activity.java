@@ -2,6 +2,7 @@ package com.chholamuri.tictactoe;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -17,6 +18,7 @@ public class Game3x3Activity extends AppCompatActivity {
     String message;
     GameState gs;
     int player;
+    boolean is2p;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,15 +38,23 @@ public class Game3x3Activity extends AppCompatActivity {
             message = (String) savedInstanceState.getSerializable(BoardSizeActivity.EXTRA_MESSAGE);
         }
 
-        Random rand;
-        rand = new Random();
-        if(rand.nextInt()%2 == 0) {
+
+        if(message.equals("Two player3 x 3")) {
+            is2p = true;
             player = 1;
-            gs.computerStart();
-            updateButton(new Point(0,0), -1);
-        }
-        else {
-            player = 1;
+           // Log.d("DBG", "2player");
+        } else {
+            is2p = false;
+            Random rand;
+            rand = new Random();
+            if(rand.nextInt()%2 == 0) {
+                player = 1;
+                gs.computerStart();
+                updateButton(new Point(0,0), -1);
+            }
+            else {
+                player = 1;
+            }
         }
 
     }
@@ -138,12 +148,13 @@ public class Game3x3Activity extends AppCompatActivity {
     public void input(int r, int c) {
         Point p = new Point(r, c);
         Point q = gs.next(p, player, getLevel());
+        /*Log.d("DBG", " p = ( " + p.getX() + ", " + p.getY() + " )");
+        Log.d("DBG", " q = ( " + q.getX() + ", " + q.getY() + " )");*/
         if(!(p.getX() == q.getX() && p.getY() == q.getY())) {
             if(p.getX()>=0 && p.getX()<3 && p.getY()>=0 && p.getY()<3) updateButton(p, player);
             if(q.getX()>=0 && q.getX()<3 && q.getY()>=0 && q.getY()<3) updateButton(q, player * (-1));
         }
-        if(q.getX() == 3 && q.getY() == 3) { // draw
-            //TODO how do you know Draw when the last input is from computer
+        if(q.getX() == 3 && q.getY() == 3 || gs.getMoveCount() >= 3*3) { // draw
             setButtonDisable();
             TextView tv = (TextView) findViewById(R.id.strEndMsg);
             tv.setText("It's a tie!!!");
@@ -151,7 +162,6 @@ public class Game3x3Activity extends AppCompatActivity {
             return;
         }
         if(gs.check1() != 0) { // win
-            //TODO how do you know Draw when the last input is from computer
             GameEnd ge = gs.endState();
             Point[] point = ge.getArr();
             for(int i=0; i<3; i++) {
@@ -171,39 +181,52 @@ public class Game3x3Activity extends AppCompatActivity {
         }
     }
 
+    public void input2p(int r, int c) {
+
+    }
+
     public void btn00(View view) {
-        input(0, 0);
+        if(is2p) input2p(0, 0);
+        else input(0, 0);
     }
 
     public void btn01(View view) {
-        input(0, 1);
+        if(is2p) input2p(0, 1);
+        else input(0, 1);
     }
 
     public void btn02(View view) {
-        input(0, 2);
+        if(is2p) input2p(0, 2);
+        else input(0, 2);
     }
 
     public void btn10(View view) {
-        input(1, 0);
+        if(is2p) input2p(1, 0);
+        else input(1, 0);
     }
 
     public void btn11(View view) {
-        input(1, 1);
+        if(is2p) input2p(1, 1);
+        else input(1, 1);
     }
 
     public void btn12(View view) {
-        input(1, 2);
+        if(is2p) input2p(1, 2);
+        else input(1, 2);
     }
 
     public void btn20(View view) {
-        input(2, 0);
+        if(is2p) input2p(2, 0);
+        else input(2, 0);
     }
 
     public void btn21(View view) {
-        input(2, 1);
+        if(is2p) input2p(2, 1);
+        else input(2, 1);
     }
 
     public void btn22(View view) {
-        input(2, 2);
+        if(is2p) input2p(2, 2);
+        else input(2, 2);
     }
 }
